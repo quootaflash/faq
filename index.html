@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Pertanyaan yang Sering Diajukan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        
+        .faq-item {
+            transition: all 0.3s ease;
+            border-radius: 0.5rem;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .search-box {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1.25rem;
+        }
+        
+        .category-chip {
+            transition: all 0.2s ease;
+        }
+        
+        .category-chip:hover, .category-chip.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen">
+        <!-- Header -->
+        <header class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="https://placehold.co/160x50?text=Company+Logo" alt="Logo perusahaan dengan desain modern" class="h-10">
+                    </div>
+                    <nav class="hidden md:flex space-x-8">
+                        <a href="#" class="text-gray-500 hover:text-gray-700">Beranda</a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">Layanan</a>
+                        <a href="#" class="text-blue-600 font-medium">FAQ</a>
+                        <a href="#" class="text-gray-500 hover:text-gray-700">Kontak</a>
+                    </nav>
+                    <button class="md:hidden text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <div class="bg-blue-700 text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-3xl md:text-4xl font-bold mb-4">Pertanyaan yang Sering Diajukan</h1>
+                <p class="text-lg text-blue-100 max-w-3xl mx-auto">Temukan jawaban untuk pertanyaan umum tentang produk dan layanan kami</p>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <!-- Search and Filter -->
+            <div class="mb-12">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="mb-6">
+                        <input type="text" placeholder="Cari pertanyaan..." class="search-box w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2">
+                        <button class="category-chip active px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium">Semua</button>
+                        <button class="category-chip px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium">Akun</button>
+                        <button class="category-chip px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium">Pembayaran</button>
+                        <button class="category-chip px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium">Pengiriman</button>
+                        <button class="category-chip px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium">Pengembalian</button>
+                        <button class="category-chip px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium">Lainnya</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Content -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Column 1 -->
+                <div class="space-y-4">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Bagaimana cara membuat akun?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Untuk membuat akun baru:</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-2">
+                                <li>Klik tombol "Daftar" di pojok kanan atas halaman kami</li>
+                                <li>Isi formulir pendaftaran dengan email dan kata sandi yang kuat</li>
+                                <li>Verifikasi email Anda melalui link yang kami kirimkan</li>
+                                <li>Lengkapi profil Anda dengan informasi yang diperlukan</li>
+                            </ol>
+                            <p class="mt-2">Setelah itu, Anda bisa langsung mulai menggunakan layanan kami.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Metode pembayaran apa saja yang diterima?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Kami menerima berbagai metode pembayaran:</p>
+                            <ul class="list-disc pl-5 space-y-2 mt-2">
+                                <li>Kartu kredit/debit (Visa, Mastercard, JCB)</li>
+                                <li>Transfer bank (ATM, Internet Banking, Mobile Banking)</li>
+                                <li>E-wallet (GoPay, OVO, DANA, LinkAja)</li>
+                                <li>Pembayaran di minimarket (Alfamart, Indomaret)</li>
+                                <li>COD (Cash on Delivery) untuk area tertentu</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Berapa lama waktu pengiriman produk?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Waktu pengiriman bervariasi tergantung pada:</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Lokasi pengiriman (dalam kota, luar kota, atau luar pulau)</li>
+                                <li>Kurir yang dipilih (reguler atau ekspres)</li>
+                                <li>Ketersediaan stok produk</li>
+                            </ul>
+                            <p class="mt-3">Estimasi umum:</p>
+                            <ul class="list-disc pl-5 space-y-2">
+                                <li>Jakarta: 1-2 hari kerja</li>
+                                <li>Jawa lainnya: 2-3 hari kerja</li>
+                                <li>Luar Jawa: 3-5 hari kerja</li>
+                                <li>Papua: 5-7 hari kerja</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Bagaimana kebijakan pengembalian produk?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>1. Produk dapat dikembalikan dalam waktu 7 hari sejak penerimaan</p>
+                            <p class="mt-2">2. Syarat pengembalian:</p>
+                            <ul class="list-disc pl-5 space-y-2 mt-2">
+                                <li>Produk dalam kondisi baru dan belum digunakan</li>
+                                <li>Kemasan original masih lengkap dan baik</li>
+                                <li>Lampirkan bukti pembelian</li>
+                            </ul>
+                            <p class="mt-2">3. Proses pengembalian:</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-2">
+                                <li>Hubungi tim layanan pelanggan kami</li>
+                                <li>Kirim produk ke alamat yang diberikan</li>
+                                <li>Tim kami akan memverifikasi produk</li>
+                                <li>Dana akan dikembalikan dalam 3-5 hari kerja setelah verifikasi</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="space-y-4">
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Apa yang harus dilakukan jika lupa password?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Jika Anda lupa password:</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-2">
+                                <li>Klik "Lupa Password" di halaman login</li>
+                                <li>Masukkan alamat email terdaftar</li>
+                                <li>Buka email dan klik link reset password</li>
+                                <li>Buat password baru (minimal 8 karakter, kombinasi huruf dan angka)</li>
+                                <li>Konfirmasi password baru</li>
+                            </ol>
+                            <p class="mt-3 text-sm text-gray-500">Pastikan email reset password tidak ada di folder spam. Jika tidak menerima email dalam 10 menit, silakan hubungi tim dukungan kami.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Bagaimana cara memeriksa status pesanan?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Ada beberapa cara memeriksa status pesanan:</p>
+                            <p class="font-medium mt-2">1. Melalui website:</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-2">
+                                <li>Login ke akun Anda</li>
+                                <li>Buka menu "Pesanan Saya"</li>
+                                <li>Cari pesanan yang ingin Anda lacak</li>
+                                <li>Status akan terlihat bersama nomor resi pengiriman</li>
+                            </ol>
+                            
+                            <p class="font-medium mt-3">2. Melalui SMS/Email:</p>
+                            <p>Kami akan mengirim update melalui SMS dan email pada tahapan:</p>
+                            <ul class="list-disc pl-5 space-y-2 mt-2">
+                                <li>Pesanan diterima</li>
+                                <li>Pesanan diproses</li>
+                                <li>Pesanan dikirim</li>
+                                <li>Pesanan dalam perjalanan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 7 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Bagaimana garansi produk bekerja?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Produk kami dilengkapi dengan garansi resmi dari produsen dengan ketentuan:</p>
+                            <ul class="list-disc pl-5 space-y-2 mt-2">
+                                <li>Garansi berlaku 1 tahun sejak tanggal pembelian</li>
+                                <li>Tidak termasuk kerusakan akibat kesalahan penggunaan</li>
+                                <li>Harus menunjukkan bukti pembelian asli</li>
+                            </ul>
+                            <p class="mt-3">Proses klaim garansi:</p>
+                            <ol class="list-decimal pl-5 space-y-2 mt-2">
+                                <li>Kunjungi pusat layanan resmi terdekat dengan membawa produk dan bukti pembelian</li>
+                                <li>Produk akan diperiksa untuk menentukan apakah termasuk garansi</li>
+                                <li>Jika diverifikasi, produk akan diperbaiki atau diganti tergantung kerusakannya</li>
+                                <li>Proses perbaikan memakan waktu 7-14 hari kerja</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 8 -->
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="faq-question font-semibold text-gray-800 text-lg mb-0">
+                            Apakah ada pengiriman internasional?
+                        </div>
+                        <div class="faq-answer mt-4 text-gray-600">
+                            <p>Saat ini kami menyediakan pengiriman internasional ke beberapa negara dengan ketentuan:</p>
+                            <ul class="list-disc pl-5 space-y-2 mt-2">
+                                <li>Biaya pengiriman bervariasi tergantung negara tujuan</li>
+                                <li>Estimasi pengiriman 7-14 hari kerja</li>
+                                <li>Pembeli bertanggung jawab atas bea cukai dan pajak impor negara tujuan</li>
+                                <li>Beberapa produk mungkin tidak tersedia untuk pengiriman internasional</li>
+                            </ul>
+                            <p class="mt-3">Daftar negara tujuan saat ini:</p>
+                            <div class="grid grid-cols-2 gap-2 mt-2">
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="#3b82f6">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Singapura</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="#3b82f6">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Malaysia</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="#3b82f6">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Australia</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="#3b82f6">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                    </svg>
+                                    <span>Jepang</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Still Have Questions -->
+            <div class="bg-blue-50 rounded-lg p-8 mt-12 text-center">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Masih ada pertanyaan?</h3>
+                <p class="text-gray-600 mb-6">Tim dukungan kami siap membantu Anda 24/7</p>
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition duration-150 ease-in-out">
+                    Hubungi Kami
+                </a>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white pt-12 pb-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Perusahaan</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-300 hover:text-white">Tentang Kami</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Karir</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Blog</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Kebijakan Privasi</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Layanan</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-300 hover:text-white">Produk</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Solusi</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Harga</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Clients</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Dukungan</h3>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-300 hover:text-white">FAQ</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Panduan</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Forum</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white">Status Layanan</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Hubungi Kami</h3>
+                        <ul class="space-y-3">
+                            <li class="text-gray-300">Jl. Contoh No. 123<br>Jakarta Selatan</li>
+                            <li class="text-gray-300">help@perusahaan.com</li>
+                            <li class="text-gray-300">+62 21 1234 5678</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+                    <p>© 2023 Perusahaan Kami. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Category Filter
+            const categoryChips = document.querySelectorAll('.category-chip');
+            
+            categoryChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    categoryChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+                    
+                    // In a real implementation, you would filter the FAQs here
+                });
+            });
+            
+            // Search Functionality
+            const searchBox = document.querySelector('.search-box');
+            
+            searchBox.addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    // In a real implementation, you would search the FAQs here
+                    console.log('Searching for:', searchBox.value);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
